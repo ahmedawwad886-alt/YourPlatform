@@ -1,0 +1,49 @@
+﻿@using YourPlatform.Models
+@model UserRegister
+@{
+  
+    ViewData["Title"] = "Login";
+}
+
+    <div class="row">
+
+    <form asp-controller="Home" asp-action="Register" method="post">
+        <div class="col-md-4">
+            <label>First name:</label>
+            <span asp-validation-for="FirstName" class="d-block text-danger"></span>
+            <input name="FirstName" class="form-control" value="@Model.FirstName" type="text" />
+
+        </div>
+        <div class="col-md-4">
+            <label>Last name:</label>
+            <span asp-validation-for="LastName" class="d-block text-danger"></span>
+            <input name="LastName" class="form-control" value="@Model.LastName" type="text" />
+
+        </div>
+            <div class="col-md-4">
+                <label>Username:</label>
+            <span asp-validation-for="UserName" class="d-block text-danger"></span>
+                <input name="UserName" class="form-control" value="@Model.UserName" type="text"/>
+
+            </div>
+            <div class="col-md-4">
+                <label>Password:</label>
+            <span asp-validation-for="Password" class="d-block text-danger"></span>
+            <input name="Password" class="form-control" value="@Model.Password" type="password" />
+            </div>
+           <div class="col-md-4 mt-3 d-flex justify-content-center">
+            <button class="btn btn-primary" type="submit">Register</button>
+
+
+          <div class="ms-3">
+                @Html.ActionLink("Already have an account?", "LoginPage", "Home")
+          </div>
+
+            @* <a href="/Home/LoginPage">Already have an account?</a> *@
+
+
+
+
+           </div>
+        </form>
+    </div>

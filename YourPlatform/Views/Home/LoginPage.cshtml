@@ -1,0 +1,23 @@
+﻿@using YourPlatform.Models
+@model Login
+
+<form asp-controller="Home" asp-action="SubmitLogin" method="post" class="form-control">
+    <div class="row">
+        <div class="col-md-6">
+            <label> UserName</label>
+            <span asp-validation-for="Username" class="text-danger"></span>
+            <input type="text" value="@Model.Username" name="Username" maxlength="20" class="form-control"/>
+        </div>
+        <div class="col-md-6">
+            <label> password</label>
+            <span asp-validation-for="Password" class="text-danger"></span>
+            <input type="password" value="@Model.Password" name="Password" maxlength="20" class="form-control" />
+        </div>
+        <div>
+            <button type="submit" class="btn-outline-primary"> Login</button>
+        </div>
+    </div>
+  
+           
+
+</form>
