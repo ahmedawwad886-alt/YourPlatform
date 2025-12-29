@@ -1,1 +1,41 @@
-﻿<h1>Home Page</h1>
+﻿<section id="home" class="">
+    <div class="hero">
+        <div>
+            <h1 style="font-size:32px;font-weight:800;margin-bottom:6px;">احجز موعدك بسهولة</h1>
+            <p class="muted">اختر الجهة والفرع والخدمة والتاريخ.</p>
+            <button class="btn" data-target="booking">احجز الآن</button>
+        </div>
+
+        <div class="card">
+            <h3>Quick Book</h3>
+            <form id="quickForm">
+
+                <label>مزود الخدمة</label>
+                <select id="providerSelect">
+                    <option value="">اختر المزود</option>
+                    <option value="bank">Bank</option>
+                </select>
+
+                <label>الفرع</label>
+                <select id="branchSelect"></select>
+
+                <label>الخدمة</label>
+                <select id="serviceSelect"></select>
+
+                <label>التاريخ</label>
+                <input type="date" id="dateInput">
+
+                <label>الوقت</label>
+                <input type="time" id="timeInput">
+
+                <label>الاسم</label>
+                <input id="nameInput" placeholder="الاسم الثلاثي">
+
+                <label>رقم الهاتف</label>
+                <input id="phoneInput" placeholder="07XXXXXXXX">
+
+                <button class="btn" type="submit">تأكيد الحجز</button>
+            </form>
+        </div>
+    </div>
+</section>

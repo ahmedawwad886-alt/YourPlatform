@@ -1,49 +1,197 @@
 ﻿@using YourPlatform.Models
 @model UserRegister
 @{
-  
+    Layout = null;
     ViewData["Title"] = "Login";
 }
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
-    <div class="row">
+<style>
+    :root {
+        --primary: #007B83;
+        --bg: #F5F5F5;
+        --card: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --border: #dcdcdc;
+    }
 
-    <form asp-controller="Home" asp-action="Register" method="post">
-        <div class="col-md-4">
-            <label>First name:</label>
-            <span asp-validation-for="FirstName" class="d-block text-danger"></span>
-            <input name="FirstName" class="form-control" value="@Model.FirstName" type="text" />
+    body {
+        margin: 0;
+        font-family: "Cairo", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+    }
 
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 16px;
+    }
+
+    header {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, .85);
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(10px);
+        z-index: 50;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .menu {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .navlink {
+        cursor: pointer;
+        padding: 6px 8px;
+        border-radius: 8px;
+        font-size: 14px;
+        opacity: .85;
+    }
+
+        .navlink.active {
+            color: var(--primary);
+            font-weight: 700;
+            opacity: 1;
+        }
+
+    button.lang,
+    button.mode {
+        padding: 6px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        border: 1px solid var(--border);
+        background: var(--card);
+    }
+
+    .hero {
+        margin-top: 20px;
+        background: var(--card);
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        padding: 24px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }
+
+    .card {
+        background: var(--card);
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        padding: 20px;
+    }
+
+    label {
+        display: block;
+        font-size: 13px;
+        opacity: .75;
+        margin-bottom: 4px;
+    }
+
+    input,
+    select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--text);
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        background: var(--primary);
+        color: white;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+        .btn.secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+    .hidden {
+        display: none !important;
+    }
+
+    .map {
+        height: 420px;
+        border-radius: 16px;
+    }
+
+    /* Modal */
+    .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+    }
+
+        .modal.open {
+            display: flex;
+        }
+
+    .dialog {
+        background: var(--card);
+        border-radius: 16px;
+        padding: 22px;
+        width: 100%;
+        max-width: 480px;
+        border: 1px solid var(--border);
+    }
+
+</style>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <form asp-controller="Home" asp-action="Register" method="post" class="form-control">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>First name:</label>
+                        <span asp-validation-for="FirstName" class="d-block text-danger"></span>
+                        <input name="FirstName" class="form-control" value="@Model.FirstName" type="text" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Last name:</label>
+                        <span asp-validation-for="LastName" class="d-block text-danger"></span>
+                        <input name="LastName" class="form-control" value="@Model.LastName" type="text" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Username:</label>
+                        <span asp-validation-for="UserName" class="d-block text-danger"></span>
+                        <input name="UserName" class="form-control" value="@Model.UserName" type="text" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Password:</label>
+                        <span asp-validation-for="Password" class="d-block text-danger"></span>
+                        <input name="Password" class="form-control" value="@Model.Password" type="password" />
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" style="color:white"> Register</button>
+                        @Html.ActionLink("Already have an account? Login", "LoginPage", "Home")
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="col-md-4">
-            <label>Last name:</label>
-            <span asp-validation-for="LastName" class="d-block text-danger"></span>
-            <input name="LastName" class="form-control" value="@Model.LastName" type="text" />
-
-        </div>
-            <div class="col-md-4">
-                <label>Username:</label>
-            <span asp-validation-for="UserName" class="d-block text-danger"></span>
-                <input name="UserName" class="form-control" value="@Model.UserName" type="text"/>
-
-            </div>
-            <div class="col-md-4">
-                <label>Password:</label>
-            <span asp-validation-for="Password" class="d-block text-danger"></span>
-            <input name="Password" class="form-control" value="@Model.Password" type="password" />
-            </div>
-           <div class="col-md-4 mt-3 d-flex justify-content-center">
-            <button class="btn btn-primary" type="submit">Register</button>
-
-
-          <div class="ms-3">
-                @Html.ActionLink("Already have an account?", "LoginPage", "Home")
-          </div>
-
-            @* <a href="/Home/LoginPage">Already have an account?</a> *@
-
-
-
-
-           </div>
-        </form>
     </div>
+</div>
